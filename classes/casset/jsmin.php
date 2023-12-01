@@ -295,7 +295,7 @@ class Casset_JSMin {
 		while (true) {
 			$get = $this->get();
 			$comment .= $get;
-			if (ord($get) <= self::ORD_LF) { // EOL reached
+			if (($get === null) || (ord($get) <= self::ORD_LF)) { // EOL reached
 				// if IE conditional comment
 				if (preg_match('/^\\/@(?:cc_on|if|elif|else|end)\\b/', $comment)) {
 					return "/{$comment}";
